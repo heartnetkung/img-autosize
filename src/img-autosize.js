@@ -3,7 +3,7 @@
 const co = require('co');
 const fs = require('fs-extra');
 const path = require('path');
-const { appendSuffix, watch, resize } = require('./autosize');
+const { appendSuffix, watch, resize } = require('./logic');
 const program = require('commander');
 
 
