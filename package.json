@@ -1,0 +1,21 @@
+{
+  "name": "img-autosize",
+  "version": "1.0.0",
+  "repository": "https://github.com/heartnetkung/img-autosize.git",
+  "author": "heartnetkung <heartnetkung@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "test": "jasmine spec/**/*_spec.js",
+    "start": "node src/main example-config.json"
+  },
+  "dependencies": {
+    "chokidar": "^1.7.0",
+    "co": "^4.6.0",
+    "fs-extra": "^4.0.1",
+    "jasmine-co": "^1.2.2",
+    "sharp": "^0.18.2"
+  },
+  "devDependencies": {
+    "jasmine": "^2.8.0"
+  }
+}

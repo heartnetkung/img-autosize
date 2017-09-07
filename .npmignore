@@ -1,0 +1,5 @@
+spec/**
+test_input/**
+test_output/**
+example-config.json
+readme.md

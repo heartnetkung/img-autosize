@@ -1,0 +1,7 @@
+[{
+	"inputDir": "test_input",
+	"maxWidth": 400,
+	"maxHeight": 400,
+	"suffix": "_m",
+	"outputDir": "test_output"
+}]
