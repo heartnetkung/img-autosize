@@ -4,6 +4,7 @@ const co = require('co');
 const fs = require('fs-extra');
 const path = require('path');
 const { appendSuffix, watch, resize } = require('./autosize');
+const program = require('commander');
 
 
 const run = function(delegate) {
@@ -55,12 +56,20 @@ const handleRemove = function(filePath) {
 run(function* Main() {
 	if (require.main !== module)
 		return;
-	if (!process.argv[2])
-		return console.log('requires config_path as argument');
 
-	var configs = yield fs.readJson(process.argv[2]);
+	program
+		.version('0.1.0')
+		.arguments('<configPath>')
+		.option('--watch', 'watch files for change automatically')
+		.action((arg) => program.configPath = arg);
+	program.parse(process.argv);
+
+	if(!program.configPath)
+		return console.error('missing argument');
+
+	var configs = yield fs.readJson(program.configPath);
 	validateConfig(configs);
 
 	for (let config of configs)
-		watch(config.inputDir, handleAdd.bind(config), handleRemove.bind(config));
+		watch(config.inputDir, handleAdd.bind(config), handleRemove.bind(config), !!program.watch);
 });

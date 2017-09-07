@@ -15,8 +15,8 @@ exports.appendSuffix = function(filePath, suffix) {
 };
 
 
-exports.watch = function(inputDir, addOrChange, unlink) {
-	var watcher = chokidar.watch('.', { cwd: inputDir, awaitWriteFinish: true, persistent: false });
+exports.watch = function(inputDir, addOrChange, unlink, persistent) {
+	var watcher = chokidar.watch('.', { cwd: inputDir, awaitWriteFinish: true, persistent });
 	return watcher.on('all', function(operation, path) {
 		if (!OPERATION[operation] || !FILE_TYPES.test(path))
 			return;
