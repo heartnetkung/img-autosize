@@ -1,5 +1,10 @@
 const chokidar = require('chokidar');
 const path = require('path');
+const sharp = require('sharp');
+
+
+const FILE_TYPES = /\.png$|\.jpe?g$|\.webp$|\.tiff$/;
+const OPERATION = { add: true, change: true, unlink: true };
 
 
 exports.appendSuffix = function(filePath, suffix) {
@@ -11,11 +16,9 @@ exports.appendSuffix = function(filePath, suffix) {
 
 
 exports.watch = function(inputDir, addOrChange, unlink) {
-	const OPERATION = { add: true, change: true, unlink: true };
-	const filter = /\.png$|\.jpe?g$/;
-	var watcher = chokidar.watch('.', { cwd: inputDir, awaitWriteFinish: true });
+	var watcher = chokidar.watch('.', { cwd: inputDir, awaitWriteFinish: true, persistent: false });
 	return watcher.on('all', function(operation, path) {
-		if (!OPERATION[operation] || !filter.test(path))
+		if (!OPERATION[operation] || !FILE_TYPES.test(path))
 			return;
 		if (operation === 'unlink')
 			unlink(path);

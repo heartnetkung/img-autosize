@@ -1,8 +1,9 @@
-const sharp = require('sharp');
+#!/usr/bin/env node
+
 const co = require('co');
 const fs = require('fs-extra');
 const path = require('path');
-const { appendSuffix, watch, resize } = require('./chokidar');
+const { appendSuffix, watch, resize } = require('./autosize');
 
 
 const run = function(delegate) {

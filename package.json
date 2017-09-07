@@ -8,14 +8,17 @@
     "test": "jasmine spec/**/*_spec.js",
     "start": "node src/main example-config.json"
   },
+  "bin": {
+    "img-autosize": "./src/main.js"
+  },
   "dependencies": {
     "chokidar": "^1.7.0",
     "co": "^4.6.0",
     "fs-extra": "^4.0.1",
-    "jasmine-co": "^1.2.2",
     "sharp": "^0.18.2"
   },
   "devDependencies": {
-    "jasmine": "^2.8.0"
+    "jasmine": "^2.8.0",
+    "jasmine-co": "^1.2.2"
   }
 }
